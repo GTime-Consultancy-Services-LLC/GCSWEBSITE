@@ -1,13 +1,13 @@
 name: Deploy via FTP to Hostinger
 
 on:
-  push:
+  push:s
     branches:
       - main # Trigger only when changes are merged into main
 
 jobs:
   deploy:
-    name: FTP Deployment
+    name: Production Deployments
     runs-on: ubuntu-latest
     environment: Prod
 
