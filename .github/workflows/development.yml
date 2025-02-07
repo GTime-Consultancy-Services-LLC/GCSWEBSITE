@@ -16,10 +16,5 @@ jobs:
       - name: Install Firebase CLI
         run: curl -sL https://firebase.tools | bash
 
-      - name: Authenticate with Firebase
-        run: firebase use --add # Optionally specify your Firebase project if needed
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }} # Pass the token
-
       - name: Deploy to Firebase Hosting
         run: firebase deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN }}
