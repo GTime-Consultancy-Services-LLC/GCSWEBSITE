@@ -1,20 +1,25 @@
-name: Deploy to Firebase
+name: Deploy Static Site to Firebase Hosting
 
 on:
   push:
     branches:
-      - development
+      - development # Trigger deployment on push to 'development'
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: Staging
+
     steps:
-      - name: Checkout Repository
+      - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Install Firebase CLI
         run: curl -sL https://firebase.tools | bash
 
-      - name: Deploy to Firebase
-        run: firebase deploy --only hosting --token "$FIREBASE_TOKEN"
+      - name: Authenticate with Firebase
+        run: firebase use --add # Optionally specify your Firebase project if needed
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }} # Pass the token
+
+      - name: Deploy to Firebase Hosting
+        run: firebase deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN }}
