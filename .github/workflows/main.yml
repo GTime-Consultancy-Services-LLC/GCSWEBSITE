@@ -9,6 +9,7 @@ jobs:
   deploy:
     name: FTP Deployment
     runs-on: ubuntu-latest
+    environment: Prod
 
     steps:
       - name: Checkout repository
