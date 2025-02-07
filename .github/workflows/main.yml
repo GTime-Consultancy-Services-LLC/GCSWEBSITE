@@ -3,7 +3,7 @@ name: Deploy via FTP to Hostinger
 on:
   push:
     branches:
-      - main  # Trigger only when changes are merged into main
+      - main # Trigger only when changes are merged into main
 
 jobs:
   deploy:
@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_IP }}
           username: ${{ secrets.FTP_USERNAME }}
@@ -23,7 +23,7 @@ jobs:
           protocol: ftp
           port: ${{ secrets.FTP_PORT }}
           local-dir: ./
-          server-dir: /public_html/  # Change if needed
+          server-dir: /public_html/ # Change if needed
           log-level: standard
           exclude: |
             **/.git*
