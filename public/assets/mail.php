@@ -1,117 +1,55 @@
 <?php
-
-
-
-    // Only process POST reqeusts.
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-        // Get the form fields and remove MORALspace.
-
-        $name = strip_tags(trim($_POST["name"]));
-
-		$name = str_replace(array("\r","\n"),array(" "," "),$name);
-
-        $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
-
-        $number = trim($_POST["number"]);
-
-        $company = trim($_POST["company"]);
-
-        $message = trim($_POST["message"]);
-
-
-
-        // Check that data was sent to the mailer.
-
-        if ( empty($name) OR empty($number) OR empty($company) OR empty($message) OR !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-
-            // Set a 400 (bad request) response code and exit.
-
-            http_response_code(400);
-
-            echo "Please complete the form and try again.";
-
-            exit;
-
-        }
-
-
-
-        // Set the recipient email address.
-
-        // FIXME: Update this to your desired email address.
-
-        $recipient = "info@gtimecs.orgss";
-
-
-
-        // Set the email subject.
-
-        $sender = "New contact from $name";
-
-
-
-        //Email Header
-
-        $head = " /// THEMEGENIX \\\ ";
-
-
-
-        // Build the email content.
-
-        $email_content = "$head\n\n\n";
-
-        $email_content .= "Name: $name\n";
-
-        $email_content .= "Email: $email\n\n";
-
-        $email_content .= "Number: $number\n\n";
-
-        $email_content .= "Company: $company\n\n";
-
-        $email_content .= "Message:\n$message\n";
-
-
-
-        // Build the email headers.
-
-        $email_headers = "From: $name <$email>";
-
-
-
-        // Send the email.
-
-        if (mail($recipient, $sender, $email_content, $email_headers)) {
-
-            // Set a 200 (okay) response code.
-
-            http_response_code(200);
-
-            echo "Thank You! Your message has been sent.";
-
-        } else {
-
-            // Set a 500 (internal server error) response code.
-
-            http_response_code(500);
-
-            echo "Oops! Something went wrong and we couldn't send your message.";
-
-        }
-
-
-
-    } else {
-
-        // Not a POST request, set a 403 (forbidden) response code.
-
-        http_response_code(403);
-
-        echo "There was a problem with your submission, please try again.";
-
+require 'sendgrid/lib/SendGrid.php'; // Include SendGrid's library
+use SendGrid;
+use SendGrid\Mail\Mail;
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = strip_tags(trim($_POST["name"]));
+    $name = str_replace(array("\r", "\n"), array(" ", " "), $name);
+    $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
+    $number = trim($_POST["number"]);
+    $company = trim($_POST["company"]);
+    $message = trim($_POST["message"]);
+
+    if (empty($name) || empty($number) || empty($company) || empty($message) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        http_response_code(400);
+        echo "Please complete the form and try again.";
+        exit;
     }
 
+    $recipient = "info@gtimecs.org"; // Replace with the desired recipient email
+    $subject = "New contact from $name";
+    $head = " /// THEMEGENIX \\ ";
 
+    $email_content = "$head\n\n";
+    $email_content .= "Name: $name\n";
+    $email_content .= "Email: $email\n";
+    $email_content .= "Number: $number\n";
+    $email_content .= "Company: $company\n";
+    $email_content .= "Message:\n$message\n";
 
+    $sendgrid = new SendGrid("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"); // Use environment variable for API key
+    $emailObj = new Mail();
+    $emailObj->setFrom($email, $name);
+    $emailObj->setSubject($subject);
+    $emailObj->addTo($recipient, "Recipient");
+    $emailObj->addContent("text/plain", $email_content);
+
+    try {
+        $response = $sendgrid->send($emailObj);
+        if ($response->statusCode() >= 200 && $response->statusCode() < 300) {
+            http_response_code(200);
+            echo "Thank You! Your message has been sent.";
+        } else {
+            http_response_code(500);
+            echo "Oops! Something went wrong and we couldn't send your message.";
+        }
+    } catch (Exception $e) {
+        http_response_code(500);
+        echo "Error: " . $e->getMessage();
+    }
+} else {
+    http_response_code(403);
+    echo "There was a problem with your submission, please try again.";
+}
 ?>
