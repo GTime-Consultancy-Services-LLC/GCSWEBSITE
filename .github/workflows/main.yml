@@ -24,7 +24,7 @@ jobs:
           protocol: ftp
           port: ${{ secrets.FTP_PORT }}
           local-dir: ./public/
-          server-dir: ./
+          server-dir: ./public_html/
           log-level: standard
           exclude: |
             **/.git*
