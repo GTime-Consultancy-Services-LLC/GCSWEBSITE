@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $recipient = "info@gtimecs.org"; // Replace with the desired recipient email
     $subject = "New contact from $name";
-    $head = " /// THEMEGENIX \\ ";
+    $head = " /// GCS \\ ";
 
     $email_content = "$head\n\n";
     $email_content .= "Name: $name\n";
