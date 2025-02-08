@@ -1,7 +1,7 @@
 <?php
 require 'sendgrid/lib/SendGrid.php'; // Include SendGrid's library
-use SendGrid;
 use SendGrid\Mail\Mail;
+use SendGrid as SendGridClient;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = strip_tags(trim($_POST["name"]));
