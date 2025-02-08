@@ -10,7 +10,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $number = trim($_POST["number"]);
     $company = trim($_POST["company"]);
     $message = trim($_POST["message"]);
-
     if (empty($name) || empty($number) || empty($company) || empty($message) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         http_response_code(400);
         echo "Please complete the form and try again.";
@@ -30,7 +29,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $sendgrid = new SendGrid("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"); // Use environment variable for API key
     $emailObj = new Mail();
-    $emailObj->setFrom($email, $name);
+     // Use a verified sender email
+    $emailObj->setFrom("info@gtimecs.org", "Gtime Consultancy Services");
+    $emailObj->setReplyTo($email, $name);
     $emailObj->setSubject($subject);
     $emailObj->addTo($recipient, "Recipient");
     $emailObj->addContent("text/plain", $email_content);
