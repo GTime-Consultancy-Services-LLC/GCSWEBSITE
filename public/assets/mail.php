@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sendgrid = new SendGrid("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"); // Use environment variable for API key
     $emailObj = new Mail();
      // Use a verified sender email
-    $emailObj->setFrom("info@gtimecs.org", "Gtime Consultancy Services");
+    $emailObj->setFrom("em722.gtimecs.org", "Gtime Consultancy Services");
     $emailObj->setReplyTo($email, $name);
     $emailObj->setSubject($subject);
     $emailObj->addTo($recipient, "Recipient");
