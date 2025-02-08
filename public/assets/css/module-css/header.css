@@ -396,6 +396,8 @@
 .logo-box-one {
   position: relative;
   display: flex;
+  width: 200px;
+  height: 54px;
 }
 
 .logo-box-one a {
