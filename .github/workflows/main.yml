@@ -24,7 +24,7 @@ jobs:
           protocol: ftp
           port: ${{ secrets.FTP_PORT }}
           local-dir: ./public/
-          server-dir: /home/u583560563/domains/gtimecs.org/public_html/
+          server-dir: ./
           log-level: standard
           exclude: |
             **/.git*
