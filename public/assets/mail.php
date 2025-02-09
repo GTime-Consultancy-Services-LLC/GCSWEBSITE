@@ -27,10 +27,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email_content .= "Company: $company\n";
     $email_content .= "Message:\n$message\n";
 
-    $sendgrid = new SendGrid("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"); // Use environment variable for API key
+    $sendgrid = new SendGrid("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"); // Use environment variable for API key
     $emailObj = new Mail();
      // Use a verified sender email
-    $emailObj->setFrom("em722.gtimecs.org", "Gtime Consultancy Services");
+    $emailObj->setFrom("noreply@gtimecs.org", "Gtime Consultancy Services");
     $emailObj->setReplyTo($email, $name);
     $emailObj->setSubject($subject);
     $emailObj->addTo($recipient, "Recipient");
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Thank You! Your message has been sent.";
         } else {
             http_response_code(500);
-            echo "Oops! Something went wrong and we couldn't send your message.";
+            echo $response;
         }
     } catch (Exception $e) {
         http_response_code(500);
