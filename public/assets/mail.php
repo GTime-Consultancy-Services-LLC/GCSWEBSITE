@@ -1,7 +1,8 @@
 <?php
-require 'sendgrid/lib/SendGrid.php'; // Include SendGrid's library
-use SendGrid\Mail\Mail;
-use SendGrid as SendGridClient;
+require 'vendor/autoload.php';
+
+ini_set('display_errors', 1);  // Show errors on screen
+error_reporting(E_ALL);  
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = strip_tags(trim($_POST["name"]));
@@ -27,8 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email_content .= "Company: $company\n";
     $email_content .= "Message:\n$message\n";
 
-    $sendgrid = new SendGrid("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"); // Use environment variable for API key
-    $emailObj = new Mail();
+    $sendgrid = new \SendGrid("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"); // Use environment variable for API key
+    $emailObj = new \SendGrid\Mail\Mail();
      // Use a verified sender email
     $emailObj->setFrom("noreply@gtimecs.org", "Gtime Consultancy Services");
     $emailObj->setReplyTo($email, $name);
@@ -42,8 +43,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             http_response_code(200);
             echo "Thank You! Your message has been sent.";
         } else {
+            echo "Response body: " . $response->body();  // Print the response body
             http_response_code(500);
-            echo $response;
+            echo "There was a problem with your submission, please try again.";
         }
     } catch (Exception $e) {
         http_response_code(500);
