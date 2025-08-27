@@ -4,7 +4,7 @@
   "description": "GtimeCS Website Asset Bundler",
   "main": "bundle-assets.js",
   "scripts": {
-    "bundle": "node bundle-assets.js bundle-css-inline.js"
+    "bundle": "node bundle-assets.js && node bundle-css-inline.js"
   },
   "devDependencies": {
     "clean-css": "^5.3.3",
