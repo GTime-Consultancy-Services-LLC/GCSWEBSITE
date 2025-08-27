@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
   <head>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>GtimeCS</title>
@@ -11,17 +14,8 @@
       type="image/x-icon"
       href="assets/img/resource/onlylogo.png"
     />
-    <!-- CSS here -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/animate.min.css" />
-    <link rel="stylesheet" href="assets/css/custom-animate.css" />
-    <link rel="stylesheet" href="assets/css/magnific-popup.css" />
-    <link rel="stylesheet" href="assets/css/all.min.css" />
-    <link rel="stylesheet" href="assets/css/odometer.css" />
-    <link rel="stylesheet" href="assets/css/swiper.min.css" />
-    <link rel="stylesheet" href="assets/css/icomoon.css" />
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="stylesheet" href="assets/css/responsive.css" />
+  <!-- Optimized CSS -->
+  <link rel="stylesheet" href="assets/css/bundle-inline.min.css" />
   </head>
 
   <body class="body-dark-bg">
@@ -48,16 +42,7 @@
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
     </script>
-    <!-- preloader -->
-    <div id="preloader">
-      <div id="loading-center">
-        <div class="loader">
-          <div class="loader-outter"></div>
-          <div class="loader-inner"></div>
-        </div>
-      </div>
-    </div>
-    <!-- preloader-end -->
+  <!-- Preloader removed for faster load. -->
 
     <!-- Scroll-top -->
     <button class="scroll-top scroll-to-target" data-target="html">
@@ -75,7 +60,7 @@
               <nav class="menu-nav">
                 <div class="logo-box-one">
                   <a href="index.html"
-                    ><img src="assets/img/resource/logo-1.png" alt="Logo"
+                    ><img src="assets/img/resource/logo-1.png" alt="Logo" loading="lazy"
                   /></a>
                 </div>
                 <div class="navbar-wrap main-menu">
@@ -176,7 +161,7 @@
               <div class="close-btn"><i class="fas fa-times"></i></div>
               <div class="nav-logo">
                 <a href="index.html"
-                  ><img src="assets/img/resource/logo-1.png" alt="Logo"
+                  ><img src="assets/img/resource/logo-1.png" alt="Logo" loading="lazy"
                 /></a>
               </div>
               <div class="menu-outer">
@@ -230,16 +215,16 @@
                   "
                 ></div>
                 <div class="shape2 float-bob-y">
-                  <img src="assets/img/shape/banner-v1-shape2.png" alt="" />
+                  <img src="assets/img/shape/banner-v1-shape2.png" alt="" loading="lazy" />
                 </div>
                 <div class="shape3 rotate-me">
-                  <img src="assets/img/shape/banner-v1-shape3.png" alt="" />
+                  <img src="assets/img/shape/banner-v1-shape3.png" alt="" loading="lazy" />
                 </div>
                 <div class="shape4 float-bob-y">
-                  <img src="assets/img/shape/banner-v1-shape4.png" alt="" />
+                  <img src="assets/img/shape/banner-v1-shape4.png" alt="" loading="lazy" />
                 </div>
                 <div class="shape5 rotate-me">
-                  <img src="assets/img/shape/banner-v1-shape3.png" alt="" />
+                  <img src="assets/img/shape/banner-v1-shape3.png" alt="" loading="lazy" />
                 </div>
 
                 <div
@@ -278,16 +263,16 @@
                   "
                 ></div>
                 <div class="shape2 float-bob-y">
-                  <img src="assets/img/shape/banner-v1-shape2.png" alt="" />
+                  <img src="assets/img/shape/banner-v1-shape2.png" alt="" loading="lazy" />
                 </div>
                 <div class="shape3 rotate-me">
-                  <img src="assets/img/shape/banner-v1-shape3.png" alt="" />
+                  <img src="assets/img/shape/banner-v1-shape3.png" alt="" loading="lazy" />
                 </div>
                 <div class="shape4 float-bob-y">
-                  <img src="assets/img/shape/banner-v1-shape4.png" alt="" />
+                  <img src="assets/img/shape/banner-v1-shape4.png" alt="" loading="lazy" />
                 </div>
                 <div class="shape5 rotate-me">
-                  <img src="assets/img/shape/banner-v1-shape3.png" alt="" />
+                  <img src="assets/img/shape/banner-v1-shape3.png" alt="" loading="lazy" />
                 </div>
                 <div
                   class="banner-one__bg"
@@ -1561,19 +1546,7 @@
     </div>
 
     <!-- JS here -->
-    <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/isotope.pkgd.min.js"></script>
-    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
-    <script src="assets/js/jquery.odometer.min.js"></script>
-    <script src="assets/js/jquery.appear.js"></script>
-    <script src="assets/js/ajax-form.js"></script>
-    <script src="assets/js/wow.min.js"></script>
-    <script src="assets/js/gsap.js"></script>
-    <script src="assets/js/ScrollTrigger.js"></script>
-    <script src="assets/js/SplitText.js"></script>
-    <script src="assets/js/swiper.min.js"></script>
-    <script src="assets/js/main.js"></script>
+  <!-- Optimized JS -->
+  <script src="assets/js/bundle.min.js" defer></script>
   </body>
 </html>

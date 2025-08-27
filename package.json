@@ -1,0 +1,14 @@
+{
+  "name": "gcswebsite",
+  "version": "1.0.0",
+  "description": "GtimeCS Website Asset Bundler",
+  "main": "bundle-assets.js",
+  "scripts": {
+    "bundle": "node bundle-assets.js bundle-css-inline.js"
+  },
+  "devDependencies": {
+    "clean-css": "^5.3.3",
+    "minify": "^9.0.0",
+    "uglify-js": "^3.19.3"
+  }
+}
